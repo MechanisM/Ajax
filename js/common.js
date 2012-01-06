@@ -64,12 +64,6 @@ $(function() {
 		
 		if( location.pathname.match(rex) ){
 			location.href='/Ajax/#' + RegExp.$1;
-
-		var rex = new RegExp("^(/.+)$","i");
-		
-		if( location.pathname.match(rex) ){
-			location.href='/#' + RegExp.$1;
-			return;
 		}
 	}
 });
