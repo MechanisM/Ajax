@@ -37,4 +37,12 @@ $(function() {
 			return false;
 		});
 	
+	
+	// setup event listener
+	// called  changeHash & page loaded
+	$.address.externalChange(function(e) {
+		var hash = $.address.value();
+		_loadHandler({url:hash});
+	});
+	
 });
