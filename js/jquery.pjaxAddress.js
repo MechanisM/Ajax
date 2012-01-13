@@ -18,19 +18,13 @@
 		$container.load( url + " " + options.fragment, function(xhr, s){
 			
 	        var title = $.trim( $(this).find('title').remove().text() );
-	        if ( title ) document.title = title;
+	        if ( title ) $.address.title(title);
 	        
 			$.address.value( ref );
-			
-			// Google Analytics support
-			if ( (options.replace || options.push) && window._gaq ){
-				_gaq.push(['_trackPageview'], url);
-			}
 			
 			$( this ).trigger("pjax:end");
 		});
 	}
-	
 	
 	$.pjaxAddress = function( options ) {
 		
@@ -41,11 +35,6 @@
 			}
 			,options);
 		
-		if( $.support.pjax ){
-			$.pjax(options);
-		}else{
-			_callAddressPlugin( options );
-		}
-		return this;
+		_callAddressPlugin( options );
 	};
 })(jQuery);
