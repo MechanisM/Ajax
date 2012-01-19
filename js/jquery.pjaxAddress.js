@@ -15,14 +15,32 @@
 			return;
 		}
 		
-		$container.load( url + " " + options.fragment, function(xhr, s){
-			
-	        var title = $.trim( $(this).find('title').remove().text() );
-	        if ( title ) $.address.title(title);
-	        
-			$.address.value( ref );
-			
-			$( this ).trigger("pjax:end");
+		
+		$.ajax({
+			url: url,
+			datType: "html",
+			context: $container,
+			beforeSend: function(xhr){
+				xhr.setRequestHeader('X-Pjax-Address', 'true');
+			},
+			success: function(data, dataType, xhr){
+				
+				var $data		= $(data)
+					, $contents	= $data.find( options.fragment )
+					, title		= $("title",data).text();
+				
+				
+				$(this).html( $contents );
+				
+				$.address.value( ref );
+				
+			},
+			complete: function(xhr, textStatus){
+				$(this).trigger("pjax:end",[xhr, textStatus]);
+			},
+			error:function(xhr, status, errorThrown){
+				
+			}
 		});
 	}
 	
