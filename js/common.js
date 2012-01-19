@@ -29,7 +29,10 @@ $(function() {
 			$(this).fadeIn(speed);
 		});
 	
-	$.address.state("/Ajax");
+	// jQuery.address configuration
+	$.address
+		.state("/Ajax")		// redirect base url
+		.crawlable(true);	// enable hashBang ( #! )
 	
 	// click event handler
 	$(targetLink).click( function(e){
