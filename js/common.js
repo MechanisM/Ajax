@@ -1,8 +1,8 @@
 $(function() {
 	
 	var targetLink		= "a"
-		, container		= "#main"
-		, fragment		= "#main > *"
+		, container		= "#address-container"
+		, fragment		= "#address-container > *"
 		, $container	= $(container)
 		, speed			= "slow";
 	
